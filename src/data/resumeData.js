@@ -12,7 +12,7 @@ const resumeData = [
     details: [],
   },
   {
-    company: "Eagle Hill Consulting, Federal GSA Washington",
+    company: "Eagle Hill Consulting",
     title: "Software Engineer",
     period: "March 2019 – April 2019",
     details: [],

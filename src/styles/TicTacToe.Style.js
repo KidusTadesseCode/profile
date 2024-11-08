@@ -1,3 +1,4 @@
+// TicTacToe.Style.js
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -8,6 +9,14 @@ const Container = styled.div`
   background: linear-gradient(135deg, #6b73ff, #000dff);
   color: white;
   padding: 3rem;
+  @media (max-width: 768px) {
+    padding: 2rem;
+    height: 100vh;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 const TicTacToeContainer = styled.div`
   display: flex;
@@ -20,6 +29,15 @@ const TicTacToeContainer = styled.div`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   max-width: 500px;
   margin: 3rem auto;
+  @media (max-width: 768px) {
+    padding: 2rem;
+    max-width: 400px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+    max-width: 300px;
+  }
 `;
 
 const Board = styled.div`
@@ -27,6 +45,10 @@ const Board = styled.div`
   grid-template-columns: repeat(3, 100px);
   grid-template-rows: repeat(3, 100px);
   gap: 10px;
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+  }
 `;
 
 const Cell = styled.div`
@@ -46,6 +68,11 @@ const Cell = styled.div`
   &:hover {
     transform: scale(1.1);
   }
+  @media (max-width: 480px) {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
 `;
 
 const Message = styled.h3`
@@ -53,6 +80,9 @@ const Message = styled.h3`
   font-size: 1.8rem;
   color: #ffcc00;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const RestartButton = styled.button`
@@ -71,6 +101,10 @@ const RestartButton = styled.button`
     background-color: #e91e63;
     transform: translateY(-3px);
   }
+  @media (max-width: 480px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
 `;
 
 const Title = styled.h2`
@@ -79,6 +113,9 @@ const Title = styled.h2`
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
   margin-bottom: 2rem;
   text-align: center;
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
 `;
 
 const Heading = styled.h1`
@@ -89,6 +126,9 @@ const Heading = styled.h1`
   text-align: center;
   padding: 1rem 0 0 0;
   margin: 0;
+  @media (max-width: 480px) {
+    font-size: 2.5rem;
+  }
 `;
 
 export {

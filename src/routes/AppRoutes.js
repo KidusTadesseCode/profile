@@ -3,9 +3,9 @@ import { createHashRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import Skills from "../pages/Skills";
 import GamifiedAchievementsPage from "../pages/gamified_achievements_page";
-import TicTacToe from "../pages/TicTacToe.js";
-import Resume from "../pages/Resume.js";
-import Layout from "../components/Layout.js";
+import TicTacToe from "../pages/TicTacToe";
+import Resume from "../pages/Resume";
+import Layout from "../components/Layout";
 
 const AppRoutes = createHashRouter([
   {

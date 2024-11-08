@@ -1,3 +1,4 @@
+// Home.js
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -5,11 +6,14 @@ import {
   SubContainer,
   Heading,
   JourneyButton,
+  iPhoneMessage,
 } from "../styles/Home.Style";
 
 const Home = () => {
   const [text, setText] = useState("Welcome ");
+  const [isIphone, setIsIphone] = useState(false);
   const fullText = "  to Kidus's Profile Journey";
+
   useEffect(() => {
     let index = 0;
     const timer = setInterval(() => {
@@ -21,6 +25,15 @@ const Home = () => {
     }, 100);
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    // Check if user is on an iPhone
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    if (userAgent.includes("iphone")) {
+      setIsIphone(true);
+    }
+  }, []);
+
   return (
     <HomeContainer>
       <motion.div
@@ -34,6 +47,11 @@ const Home = () => {
           <JourneyButton to="/tictactoe">Tic-Tac-Toe</JourneyButton>
           <JourneyButton to="/skills">Stack Skills</JourneyButton>
         </SubContainer>
+        {/* {isIphone && (
+          <iPhoneMessage>
+            Try adding this app to your home screen for a better experience!
+          </iPhoneMessage>
+        )} */}
       </motion.div>
     </HomeContainer>
   );

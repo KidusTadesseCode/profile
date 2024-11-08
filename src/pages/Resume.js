@@ -1,3 +1,4 @@
+// Resume.js
 import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
 import resumeData from "../data/resumeData";
@@ -16,14 +17,14 @@ const Resume = () => {
   useEffect(() => {
     const svg = d3
       .select(svgRef.current)
-      .attr("width", 600)
+      .attr("width", "100%")
       .attr("height", resumeData.length * 150)
       .style("overflow", "visible")
       .style("background", "rgba(255, 255, 255, 0.1)");
 
     const timelineGroup = svg
       .append("g")
-      .attr("transform", "translate(100, 50)");
+      .attr("transform", "translate(50, 50)");
 
     const yScale = d3
       .scalePoint()
@@ -74,7 +75,18 @@ const Resume = () => {
       .attr("y", (_, i) => yScale(i) - 10)
       .attr("fill", "#cccccc")
       .style("font-size", "1rem")
-      .text((d) => `${d.title}, ${d.period}`);
+      .text((d) => `${d.title}`);
+    // .text((d) => `${d.title}, ${d.period}`);
+    timelineGroup
+      .selectAll("text.period")
+      .data(resumeData)
+      .enter()
+      .append("text")
+      .attr("x", 40)
+      .attr("y", (_, i) => yScale(i) + 10)
+      .attr("fill", "#aaaaaa")
+      .style("font-size", "0.9rem")
+      .text((d) => d.period);
 
     resumeData.forEach((d, i) => {
       timelineGroup

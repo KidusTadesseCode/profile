@@ -2,17 +2,28 @@
 import styled from "styled-components";
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
-  background-color: #36414c;
+  padding: 2rem;
+  /* background-color: #36414c; */
+  background: linear-gradient(135deg, #6b73ff, #000dff);
   color: white;
+  min-height: 100vh;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 const ContactContainer = styled.div`
   width: 100%;
   margin-top: 2rem;
   text-align: center;
+  padding: 1rem;
+
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+  }
 `;
 
 const ContactLink = styled.a`
@@ -24,6 +35,10 @@ const ContactLink = styled.a`
   &:hover {
     color: #e6b800;
   }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const ResumeContainer = styled.div`
@@ -31,15 +46,31 @@ const ResumeContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 3rem;
-  background: linear-gradient(135deg, #28313b, #485461);
-  min-height: 100vh;
   color: #ffffff;
+  width: 100%;
+  max-width: 800px;
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const SvgContainer = styled.div`
   width: 100%;
   max-width: 1200px;
   padding: 3rem 0;
+
+  @media (max-width: 768px) {
+    padding: 2rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem 0;
+  }
 `;
 
 const DownloadButton = styled.button`
@@ -56,6 +87,16 @@ const DownloadButton = styled.button`
   &:hover {
     background-color: #e6b800;
     transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
   }
 `;
 
