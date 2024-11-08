@@ -1,9 +1,8 @@
+// App.js
 import { RouterProvider } from "react-router-dom";
-import PageRoutes from "./Global/Setting/PageRoutes";
-import BrowserRouter from "./Global/Outlet/BrowserRouter";
-
+import AppRoutes from "./routes/AppRoutes";
 function App() {
-  return <RouterProvider router={BrowserRouter(PageRoutes)} />;
+  return <RouterProvider router={AppRoutes} />;
 }
 
 export default App;
