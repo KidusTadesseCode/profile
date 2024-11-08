@@ -12,7 +12,7 @@ import {
 const Home = () => {
   const [text, setText] = useState("Welcome ");
   const [isIphone, setIsIphone] = useState(false);
-  const fullText = "  to Kidus's Profile Journey";
+  const fullText = "  to Kidus's Profile Journey ";
 
   useEffect(() => {
     let index = 0;
