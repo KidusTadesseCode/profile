@@ -13,7 +13,7 @@ This is a fun and engaging **Tic Tac Toe** game built using **React.js** with un
 
 ## Demo
 
-You can play the game here: [GitHub Pages Deployment Link](https://<username>.github.io/<repository-name>)
+You can play the game here: [GitHub Pages Deployment Link](https://KidusTadesseCode.github.io/profile)
 
 ## Installation
 
@@ -22,13 +22,13 @@ To run this project locally, follow these steps:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/<username>/<repository-name>.git
+   git clone https://github.com/KidusTadesseCode/profile.git
    ```
 
 2. **Navigate into the project directory**:
 
    ```bash
-   cd <repository-name>
+   cd profile
    ```
 
 3. **Install dependencies**:
@@ -90,7 +90,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Email**: KidusTadesseArega@gmail.com
 - **LinkedIn**: [Kidus Tadesse](https://www.linkedin.com/in/kidustadesse)
-
-## Acknowledgements
-
-- Special thanks to the creators of **React** and **Styled-Components** for making front-end development enjoyable and expressive.
