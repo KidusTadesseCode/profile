@@ -23,9 +23,8 @@ const Home = () => {
   const [appInstalled, setAppInstalled] = useState(
     localStorage.getItem("appInstalled") === "true"
   );
-  const [showAddToHomeScreen, setShowAddToHomeScreen] = useState(false);
 
-  const fullText = "  to Kidus's Profile Journey ";
+  const [fullText] = useState("  to Kidus's Profile Journey ");
 
   useEffect(() => {
     if (text.length === 35) return;
@@ -38,7 +37,7 @@ const Home = () => {
       }
     }, 100);
     return () => clearInterval(timer);
-  }, []);
+  }, [fullText, text.length]);
 
   useEffect(() => {
     // Check if the user is on an iPhone
@@ -50,12 +49,6 @@ const Home = () => {
         setIsSafari(true);
       }
     }
-  }, []);
-
-  useEffect(() => {
-    // Check local storage to see if the app has been added to home screen
-    const addedToHomeScreen = localStorage.getItem("addedToHomeScreen");
-    if (!addedToHomeScreen) setShowAddToHomeScreen(true); // Show the button if the flag is not set
   }, []);
 
   const handleButtonClick = () => {
@@ -72,7 +65,21 @@ const Home = () => {
     setShowModal(false);
   };
 
-  console.log("showAddToHomeScreen: ", showAddToHomeScreen);
+  const handleAppInstalled = () => {
+    // Set a flag in local storage when the user adds the app to the home screen
+    localStorage.setItem("appInstalled", "true");
+    setAppInstalled(true);
+  };
+
+  useEffect(() => {
+    // Listen for the "beforeinstallprompt" or "appinstalled" event (for PWAs)
+    window.addEventListener("appinstalled", handleAppInstalled);
+
+    return () => {
+      window.removeEventListener("appinstalled", handleAppInstalled);
+    };
+  }, []);
+
   return (
     <HomeContainer>
       <motion.div
@@ -86,7 +93,7 @@ const Home = () => {
           <JourneyButton to="/tictactoe">Tic-Tac-Toe</JourneyButton>
           <JourneyButton to="/skills">Stack Skills</JourneyButton>
         </SubContainer>
-        {/* isSafari && */}
+        {/* Conditionally render the "Add to Home Screen" button */}
         {!appInstalled && (
           <AddToHomeButton onClick={handleButtonClick}>
             {isIphone && !isSafari
@@ -98,7 +105,7 @@ const Home = () => {
         )}
       </motion.div>
 
-      {showModal && isIphone && showAddToHomeScreen && (
+      {showModal && isIphone && (
         <ModaliPhoneContent
           handleModalClose={handleModalClose}
           isIphone={isIphone}
@@ -111,16 +118,17 @@ const Home = () => {
     </HomeContainer>
   );
 };
+
 function ModalQRContent({ handleModalClose }) {
   return (
     <Modal onClick={handleModalClose}>
-      <h3>Scan the QR Code to try on a iOS Device</h3>
+      <h3>Scan the QR Code to try on an iOS Device</h3>
       <img src={qrCode} alt="QR Code" width="200" />
     </Modal>
   );
 }
+
 function ModaliPhoneContent({ handleModalClose }) {
-  const [showAddToHomeScreen, setShowAddToHomeScreen] = useState(false);
   return (
     <Modal onClick={handleModalClose}>
       <ModalContainer>
@@ -132,7 +140,17 @@ function ModaliPhoneContent({ handleModalClose }) {
           <img src={addToHomeScreen} alt="Add to Home" width="20" />
         </p>
       </ModalContainer>
-      <ArrowIcon src={arrowDown} alt="Arrow pointing down" />
+      <ArrowIcon
+        src={arrowDown}
+        alt="Arrow pointing down"
+        style={{
+          animation: "bounce 1s infinite",
+          position: "absolute",
+          bottom: "10%",
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+      />
     </Modal>
   );
 }
