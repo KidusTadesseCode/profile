@@ -91,4 +91,69 @@ const iPhoneMessage = styled.p`
   }
 `;
 
-export { HomeContainer, SubContainer, Heading, JourneyButton, iPhoneMessage };
+const AddToHomeButton = styled.button`
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background-color: #007aff;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  transition: background-color 0.3s, transform 0.2s;
+
+  &:hover {
+    background-color: #005bb5;
+    transform: translateY(-3px);
+  }
+`;
+
+const Modal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 1000;
+  padding: 1rem;
+`;
+
+const ModalContainer = styled.div`
+  position: inherit;
+  top: 75%;
+`;
+
+const ArrowIcon = styled.img`
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 2rem;
+  animation: bounce 1s infinite alternate;
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-15px);
+    }
+  }
+`;
+
+export {
+  HomeContainer,
+  SubContainer,
+  Heading,
+  JourneyButton,
+  iPhoneMessage,
+  AddToHomeButton,
+  Modal,
+  ModalContainer,
+  ArrowIcon,
+};

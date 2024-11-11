@@ -1,4 +1,3 @@
-// Home.js
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -6,15 +5,29 @@ import {
   SubContainer,
   Heading,
   JourneyButton,
-  iPhoneMessage,
+  AddToHomeButton,
+  Modal,
+  ModalContainer,
+  ArrowIcon,
 } from "../styles/Home.Style";
+import iPhoneShareButton from "../assets/iPhoneShareButton.svg";
+import arrowDown from "../assets/arrowDown.svg";
+import addToHomeScreen from "../assets/addToHomeScreen.svg";
+import qrCode from "../assets/qrCode.svg";
 
 const Home = () => {
   const [text, setText] = useState("Welcome ");
   const [isIphone, setIsIphone] = useState(false);
+  const [isSafari, setIsSafari] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [appInstalled, setAppInstalled] = useState(
+    localStorage.getItem("appInstalled") === "true"
+  );
+
   const fullText = "  to Kidus's Profile Journey ";
 
   useEffect(() => {
+    if (text.length === 35) return;
     let index = 0;
     const timer = setInterval(() => {
       setText((prev) => prev + fullText[index]);
@@ -27,12 +40,38 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    // Check if user is on an iPhone
+    // Check if the user is on an iPhone
     const userAgent = window.navigator.userAgent.toLowerCase();
     if (userAgent.includes("iphone")) {
       setIsIphone(true);
+      // Check if the user is using Safari
+      if (userAgent.includes("safari") && !userAgent.includes("crios")) {
+        setIsSafari(true);
+      }
     }
   }, []);
+
+  const handleButtonClick = () => {
+    if (isIphone && isSafari) {
+      setShowModal(true);
+    } else if (isIphone) {
+      window.location.href = "https://bit.ly/4et2CQj";
+    } else {
+      setShowModal(true);
+    }
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
+  // handleAddToHomeScreen
+  const handleAddToHomeScreen = () => {
+    // Logic to handle adding to home screen can be user-instructed
+    localStorage.setItem("appInstalled", "true");
+    setAppInstalled(true);
+    setShowModal(false);
+  };
 
   return (
     <HomeContainer>
@@ -47,14 +86,54 @@ const Home = () => {
           <JourneyButton to="/tictactoe">Tic-Tac-Toe</JourneyButton>
           <JourneyButton to="/skills">Stack Skills</JourneyButton>
         </SubContainer>
-        {/* {isIphone && (
-          <iPhoneMessage>
-            Try adding this app to your home screen for a better experience!
-          </iPhoneMessage>
-        )} */}
+        {/* isSafari && */}
+        {!appInstalled && (
+          <AddToHomeButton onClick={handleButtonClick}>
+            {isIphone && !isSafari
+              ? "Switch to Safari for a Better Experience"
+              : isIphone && isSafari
+              ? "Add to Home Screen"
+              : "Try On iOS Safari Mobile Devices"}
+          </AddToHomeButton>
+        )}
       </motion.div>
+
+      {showModal && isIphone && (
+        <ModaliPhoneContent
+          handleModalClose={handleModalClose}
+          isIphone={isIphone}
+        />
+      )}
+
+      {showModal && !isIphone && (
+        <ModalQRContent handleModalClose={handleModalClose} />
+      )}
     </HomeContainer>
   );
 };
+function ModalQRContent({ handleModalClose }) {
+  return (
+    <Modal onClick={handleModalClose}>
+      <h3>Scan the QR Code to try on a iOS Device</h3>
+      <img src={qrCode} alt="QR Code" width="200" />
+    </Modal>
+  );
+}
+function ModaliPhoneContent({ handleModalClose }) {
+  return (
+    <Modal onClick={handleModalClose}>
+      <ModalContainer>
+        <p>Try adding this app to your home screen for a better experience!</p>
+        <p>
+          Tap the icon{" "}
+          <img src={iPhoneShareButton} alt="Share Button" width="20" /> at the
+          bottom -&gt; then the icon{" "}
+          <img src={addToHomeScreen} alt="Add to Home" width="20" />
+        </p>
+      </ModalContainer>
+      <ArrowIcon src={arrowDown} alt="Arrow pointing down" />
+    </Modal>
+  );
+}
 
 export default Home;
