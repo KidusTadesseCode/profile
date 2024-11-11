@@ -126,7 +126,7 @@ const Modal = styled.div`
 
 const ModalContainer = styled.div`
   position: inherit;
-  top: 75%;
+  top: 70%;
 `;
 
 const ArrowIcon = styled.img`

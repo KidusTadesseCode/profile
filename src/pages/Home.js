@@ -125,9 +125,9 @@ function ModaliPhoneContent({ handleModalClose }) {
       <ModalContainer>
         <p>Try adding this app to your home screen for a better experience!</p>
         <p>
-          Tap the icon{" "}
-          <img src={iPhoneShareButton} alt="Share Button" width="20" /> at the
-          bottom -&gt; then the icon{" "}
+          Tap the icon &nbsp;&nbsp;
+          <img src={iPhoneShareButton} alt="Share Button" width="20" />
+          &nbsp;&nbsp;at the bottom then the icon&nbsp;&nbsp;
           <img src={addToHomeScreen} alt="Add to Home" width="20" />
         </p>
       </ModalContainer>
