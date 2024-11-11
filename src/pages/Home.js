@@ -27,12 +27,13 @@ const Home = () => {
   const [fullText] = useState("  to Kidus's Profile Journey ");
 
   useEffect(() => {
-    if (text.length === 35) return;
+    if (text.length === fullText.length) return;
+
     let index = 0;
     const timer = setInterval(() => {
       setText((prev) => prev + fullText[index]);
       index++;
-      if (index === fullText.length - 1) {
+      if (index === fullText.length) {
         clearInterval(timer);
       }
     }, 100);
@@ -51,10 +52,25 @@ const Home = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // Listen for the "appinstalled" event and update localStorage
+    const handleAppInstalled = () => {
+      localStorage.setItem("appInstalled", "true");
+      setAppInstalled(true);
+    };
+
+    window.addEventListener("appinstalled", handleAppInstalled);
+
+    return () => {
+      window.removeEventListener("appinstalled", handleAppInstalled);
+    };
+  }, []);
+
   const handleButtonClick = () => {
     if (isIphone && isSafari) {
       setShowModal(true);
     } else if (isIphone) {
+      // Redirect user to Safari
       window.location.href = "https://bit.ly/4et2CQj";
     } else {
       setShowModal(true);
@@ -64,21 +80,6 @@ const Home = () => {
   const handleModalClose = () => {
     setShowModal(false);
   };
-
-  const handleAppInstalled = () => {
-    // Set a flag in local storage when the user adds the app to the home screen
-    localStorage.setItem("appInstalled", "true");
-    setAppInstalled(true);
-  };
-
-  useEffect(() => {
-    // Listen for the "beforeinstallprompt" or "appinstalled" event (for PWAs)
-    window.addEventListener("appinstalled", handleAppInstalled);
-
-    return () => {
-      window.removeEventListener("appinstalled", handleAppInstalled);
-    };
-  }, []);
 
   return (
     <HomeContainer>
@@ -106,10 +107,7 @@ const Home = () => {
       </motion.div>
 
       {showModal && isIphone && (
-        <ModaliPhoneContent
-          handleModalClose={handleModalClose}
-          isIphone={isIphone}
-        />
+        <ModaliPhoneContent handleModalClose={handleModalClose} />
       )}
 
       {showModal && !isIphone && (
