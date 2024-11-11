@@ -23,6 +23,7 @@ const Home = () => {
   const [appInstalled, setAppInstalled] = useState(
     localStorage.getItem("appInstalled") === "true"
   );
+  const [showAddToHomeScreen, setShowAddToHomeScreen] = useState(false);
 
   const fullText = "  to Kidus's Profile Journey ";
 
@@ -51,6 +52,12 @@ const Home = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // Check local storage to see if the app has been added to home screen
+    const addedToHomeScreen = localStorage.getItem("addedToHomeScreen");
+    if (!addedToHomeScreen) setShowAddToHomeScreen(true); // Show the button if the flag is not set
+  }, []);
+
   const handleButtonClick = () => {
     if (isIphone && isSafari) {
       setShowModal(true);
@@ -62,14 +69,6 @@ const Home = () => {
   };
 
   const handleModalClose = () => {
-    setShowModal(false);
-  };
-
-  // handleAddToHomeScreen
-  const handleAddToHomeScreen = () => {
-    // Logic to handle adding to home screen can be user-instructed
-    localStorage.setItem("appInstalled", "true");
-    setAppInstalled(true);
     setShowModal(false);
   };
 
@@ -98,7 +97,7 @@ const Home = () => {
         )}
       </motion.div>
 
-      {showModal && isIphone && (
+      {showModal && isIphone && !showAddToHomeScreen && (
         <ModaliPhoneContent
           handleModalClose={handleModalClose}
           isIphone={isIphone}
@@ -120,6 +119,7 @@ function ModalQRContent({ handleModalClose }) {
   );
 }
 function ModaliPhoneContent({ handleModalClose }) {
+  const [showAddToHomeScreen, setShowAddToHomeScreen] = useState(false);
   return (
     <Modal onClick={handleModalClose}>
       <ModalContainer>
