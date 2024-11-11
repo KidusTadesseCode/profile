@@ -72,6 +72,7 @@ const Home = () => {
     setShowModal(false);
   };
 
+  console.log("showAddToHomeScreen: ", showAddToHomeScreen);
   return (
     <HomeContainer>
       <motion.div
@@ -97,7 +98,7 @@ const Home = () => {
         )}
       </motion.div>
 
-      {showModal && isIphone && !showAddToHomeScreen && (
+      {showModal && isIphone && showAddToHomeScreen && (
         <ModaliPhoneContent
           handleModalClose={handleModalClose}
           isIphone={isIphone}
