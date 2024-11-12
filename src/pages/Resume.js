@@ -104,8 +104,10 @@ const Resume = () => {
   }, []);
 
   const downloadResume = () => {
-    trackButton("Download Full Resume");
-    window.location.href = `${process.env.PUBLIC_URL}/Kidus_Tadessa_Resume_2024.docx`;
+    if (JSON.parse(localStorage.getItem("userConsent")) === true)
+      trackButton("Download Full Resume");
+    window.location.href = `${process.env.PUBLIC_URL}/Kidus_Resume_2024.docx`;
+    return;
   };
 
   return (
