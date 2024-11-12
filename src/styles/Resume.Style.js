@@ -5,7 +5,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  /* background-color: #36414c; */
   background: linear-gradient(135deg, #6b73ff, #000dff);
   color: white;
   min-height: 100vh;

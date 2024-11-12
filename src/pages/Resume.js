@@ -10,6 +10,7 @@ import {
   SvgContainer,
   DownloadButton,
 } from "../styles/Resume.Style";
+import { trackButton } from "../ga";
 
 const Resume = () => {
   const svgRef = useRef();
@@ -103,6 +104,7 @@ const Resume = () => {
   }, []);
 
   const downloadResume = () => {
+    trackButton("Download Full Resume");
     window.location.href = `${process.env.PUBLIC_URL}/Kidus_Tadessa_Resume_2024.docx`;
   };
 

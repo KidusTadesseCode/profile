@@ -58,6 +58,7 @@ const Skills = () => {
     { name: "Git", icon: <FaGitAlt /> },
     { name: "Jenkins", icon: <SiJenkins /> },
     { name: "Figma", icon: <SiFigma /> },
+    { name: "Adobe XD", icon: <SiAdobe /> },
     { name: "Oracle", icon: <SiOracle /> },
     { name: "Postgres", icon: <SiPostgresql /> },
     { name: "MySQL", icon: <SiMysql /> },
@@ -68,7 +69,6 @@ const Skills = () => {
     { name: "Rollup", icon: <SiRollupdotjs /> },
     { name: "jQuery", icon: <SiJquery /> },
     { name: "JSON", icon: <SiJson /> },
-    { name: "Adobe XD", icon: <SiAdobe /> },
     { name: "CSS3", icon: <SiCss3 /> },
     { name: "Linux", icon: <FaLinux /> },
   ];

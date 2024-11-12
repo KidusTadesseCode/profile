@@ -1,3 +1,4 @@
+// routes.js
 import Home from "../pages/Home";
 import Resume from "../pages/Resume";
 import TicTacToe from "../pages/TicTacToe";
