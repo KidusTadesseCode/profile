@@ -3,7 +3,8 @@ import Home from "../pages/Home";
 import Resume from "../pages/Resume";
 import TicTacToe from "../pages/TicTacToe";
 import Skills from "../pages/Skills";
-import GamifiedAchievementsPage from "../pages/gamified_achievements_page";
+import Achievements from "../pages/Achievements";
+// import ImageConverter from "../components/ImageConverter";
 const routes = [
   {
     path: "/",
@@ -27,7 +28,7 @@ const routes = [
   },
   {
     path: "/achievements",
-    element: <GamifiedAchievementsPage />,
+    element: <Achievements />,
     name: "Achievements",
   },
 ];
