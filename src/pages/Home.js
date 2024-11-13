@@ -22,7 +22,7 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const appInstalled = window.navigator.standalone === true;
 
-  const fullText = "  to Kidus's Profile Journey ";
+  const fullText = "  to Kidus's Profile ";
 
   useEffect(() => {
     let index = 0;
