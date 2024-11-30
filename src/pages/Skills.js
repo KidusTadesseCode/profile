@@ -1,78 +1,21 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import {
-  FaReact,
-  FaNodeJs,
-  FaDocker,
-  FaCss3Alt,
-  FaJira,
-  FaGitAlt,
-  FaAws,
-  FaLinux,
-} from "react-icons/fa";
-import {
-  SiGraphql,
-  SiTypescript,
-  SiJavascript,
-  SiRedux,
-  SiHtml5,
-  SiAngular,
-  SiStorybook,
-  SiJenkins,
-  SiFigma,
-  SiPostgresql,
-  SiMysql,
-  SiMongodb,
-  SiRedis,
-  SiWebpack,
-  SiRollupdotjs,
-  SiJquery,
-  SiJson,
-  SiAdobe,
-  SiCss3,
-} from "react-icons/si";
-import { SiOracle } from "react-icons/si";
-
+// Skills.js
+import React, { useEffect, useState } from "react";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 import {
   SkillsContainer,
+  SkillsWrapper,
   Header,
   SkillGrid,
   SkillCard,
   SkillIcon,
+  CategoryTitle,
+  SkillsDataContainer,
+  Experience,
+  SkillLevel,
 } from "../styles/Skills.Styles";
+import skillsData from "../data/skillsData";
 
 const Skills = () => {
-  const skills = [
-    { name: "React", icon: <FaReact /> },
-    { name: "GraphQL", icon: <SiGraphql /> },
-    { name: "Node.js", icon: <FaNodeJs /> },
-    { name: "Docker", icon: <FaDocker /> },
-    { name: "Styled-Components", icon: <FaCss3Alt /> },
-    { name: "TypeScript", icon: <SiTypescript /> },
-    { name: "JavaScript", icon: <SiJavascript /> },
-    { name: "Redux", icon: <SiRedux /> },
-    { name: "HTML5", icon: <SiHtml5 /> },
-    { name: "Angular", icon: <SiAngular /> },
-    { name: "Storybook", icon: <SiStorybook /> },
-    { name: "Jira", icon: <FaJira /> },
-    { name: "Git", icon: <FaGitAlt /> },
-    { name: "Jenkins", icon: <SiJenkins /> },
-    { name: "Figma", icon: <SiFigma /> },
-    { name: "Adobe XD", icon: <SiAdobe /> },
-    { name: "Oracle", icon: <SiOracle /> },
-    { name: "Postgres", icon: <SiPostgresql /> },
-    { name: "MySQL", icon: <SiMysql /> },
-    { name: "MongoDB", icon: <SiMongodb /> },
-    { name: "Redis", icon: <SiRedis /> },
-    { name: "AWS", icon: <FaAws /> },
-    { name: "Webpack", icon: <SiWebpack /> },
-    { name: "Rollup", icon: <SiRollupdotjs /> },
-    { name: "jQuery", icon: <SiJquery /> },
-    { name: "JSON", icon: <SiJson /> },
-    { name: "CSS3", icon: <SiCss3 /> },
-    { name: "Linux", icon: <FaLinux /> },
-  ];
-
   const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
@@ -81,8 +24,25 @@ const Skills = () => {
     }, 500);
   }, []);
 
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
   return (
-    <SkillsContainer>
+    <SkillsContainer
+      className="SkillsContainer"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <Header
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -90,20 +50,49 @@ const Skills = () => {
       >
         Stack Skills
       </Header>
-      <SkillGrid>
-        {skills.map((skill, index) => (
-          <SkillCard
-            key={index}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={revealed ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: index * 0.3 }}
-            whileHover={{ scale: 1.1 }}
+      <SkillsWrapper>
+        {skillsData.map((category, categoryIndex) => (
+          <SkillsDataContainer
+            key={categoryIndex}
+            className={`skill-category-${categoryIndex}`}
           >
-            <SkillIcon>{skill.icon}</SkillIcon>
-            {skill.name}
-          </SkillCard>
+            <CategoryTitle>{category.category}</CategoryTitle>
+            <SkillGrid>
+              {category.skills.map((skill, index) => (
+                // <SkillCard
+                //   key={index}
+                //   initial={{ opacity: 0, scale: 0.8 }}
+                //   animate={revealed ? { opacity: 1, scale: 1 } : {}}
+                //   transition={{ duration: 0.5, delay: index * 0.3 }}
+                //   whileHover={{ scale: 1.1 }}
+                //   aria-label={skill.name}
+                //   data-tooltip-id="skills-tooltip"
+                //   data-tooltip-content={skill.description}
+                // >
+                //   <SkillIcon>{skill.icon}</SkillIcon>
+                //   {skill.name}
+                // </SkillCard>
+                <SkillCard
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={revealed ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.5, delay: index * 0.3 }}
+                  whileHover={{ scale: 1.1 }}
+                  aria-label={skill.name}
+                  data-tooltip-id="skills-tooltip"
+                  data-tooltip-content={skill.description}
+                >
+                  <SkillIcon>{skill.icon}</SkillIcon>
+                  <h3>{skill.name}</h3>
+                  <Experience>{skill.yearsOfExperience} Years</Experience>
+                  <SkillLevel>{skill.level}</SkillLevel>
+                </SkillCard>
+              ))}
+            </SkillGrid>
+          </SkillsDataContainer>
         ))}
-      </SkillGrid>
+        <ReactTooltip id="skills-tooltip" place="top" effect="solid" />
+      </SkillsWrapper>
     </SkillsContainer>
   );
 };

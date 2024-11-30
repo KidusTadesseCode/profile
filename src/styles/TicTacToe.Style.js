@@ -119,7 +119,7 @@ const Title = styled.h2`
 `;
 
 const Heading = styled.h1`
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #ffcc00;
   text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
   margin-bottom: 2rem;
