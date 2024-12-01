@@ -1,6 +1,5 @@
 // TicTacToe.js
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Container,
   TicTacToeContainer,
@@ -65,6 +64,10 @@ const TicTacToe = () => {
       }
       setIsUserTurn(true);
     }
+    const boardFilledLength = board.filter((cell) => cell !== null).length;
+    if (boardFilledLength === 8) {
+      setMessage("Tie game!");
+    }
   };
 
   const findBestMove = (newBoard) => {
@@ -123,7 +126,10 @@ const TicTacToe = () => {
 
   return (
     <Container>
-      <Heading>Think You Can Beat the Unbeatable? Tic Tac Toe Awaits!</Heading>
+      <Heading>
+        <h1>Think You Can Beat the Unbeatable?</h1>
+        <h2>Tic Tac Toe Awaits!</h2>
+      </Heading>
       <TicTacToeContainer>
         <Title>Play Tic Tac Toe</Title>
         <Board>

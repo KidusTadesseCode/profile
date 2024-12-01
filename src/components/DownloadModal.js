@@ -12,9 +12,11 @@ import {
 import { FaFilePdf } from "react-icons/fa";
 import { FaFileWord } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa"; // Close icon for modal
-
+import { trackButton } from "../ga";
 const DownloadModal = ({ setShowModal, resumeLocation, promptMessage }) => {
   const handleDownload = (format) => {
+    if (JSON.parse(localStorage.getItem("userConsent")) === true)
+      trackButton("Download Full Resume");
     if (format === "pdf") {
       window.open(resumeLocation.pdf, "_blank"); // Open PDF in a new tab or download
     } else if (format === "docx") {

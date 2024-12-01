@@ -8,7 +8,7 @@ const Container = styled.div`
   justify-content: center;
   background: linear-gradient(135deg, #6b73ff, #000dff);
   color: white;
-  padding: 3rem;
+  padding: 6rem 3rem 3rem 3rem;
   @media (max-width: 768px) {
     padding: 2rem;
     height: 100vh;
@@ -118,16 +118,44 @@ const Title = styled.h2`
   }
 `;
 
-const Heading = styled.h1`
-  font-size: 2.5rem;
-  color: #ffcc00;
-  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
-  margin-bottom: 2rem;
-  text-align: center;
-  padding: 1rem 0 0 0;
-  margin: 0;
-  @media (max-width: 480px) {
-    font-size: 2.5rem;
+// const Heading = styled.h1`
+//   font-size: 2.5rem;
+//   color: #ffcc00;
+//   text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
+//   margin-bottom: 2rem;
+//   text-align: center;
+//   padding: 1rem 0 0 0;
+//   margin: 0;
+//   @media (max-width: 480px) {
+//     font-size: 2.5rem;
+//   }
+// `;
+
+const Heading = styled.div`
+  & h1 {
+    font-size: 2rem;
+    color: #ffcc00;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
+    margin-bottom: 2rem;
+    text-align: center;
+    padding: 1rem 0 0 0;
+    margin: 0;
+    /* @media (max-width: 480px) {
+      font-size: 2.5rem;
+    } */
+  }
+
+  & h2 {
+    font-size: 1.5rem;
+    color: #ffcc00;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
+    margin-bottom: 2rem;
+    text-align: center;
+    padding: 1rem 0 0 0;
+    margin: 0;
+    /* @media (max-width: 480px) {
+      font-size: 2rem;
+    } */
   }
 `;
 

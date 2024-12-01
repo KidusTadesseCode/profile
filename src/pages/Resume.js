@@ -4,13 +4,12 @@ import * as d3 from "d3";
 import resumeData from "../data/resumeData";
 import {
   Container,
-  ContactContainer,
-  ContactLink,
+  // ContactContainer,
+  // ContactLink,
   ResumeContainer,
   SvgContainer,
   DownloadButton,
 } from "../styles/Resume.Style";
-import { trackButton } from "../ga";
 import DownloadModal from "../components/DownloadModal";
 
 const Resume = () => {
@@ -135,7 +134,7 @@ const Resume = () => {
           <svg ref={svgRef}></svg>
         </SvgContainer>
       </ResumeContainer>
-      <ContactContainer>
+      {/* <ContactContainer>
         <h1>Contact Information</h1>
         <p>Email: KidusTadesseArega@gmail.com</p>
         <ContactLink
@@ -144,7 +143,7 @@ const Resume = () => {
         >
           LinkedIn Profile
         </ContactLink>
-      </ContactContainer>
+      </ContactContainer> */}
     </Container>
   );
 };

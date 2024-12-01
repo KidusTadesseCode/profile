@@ -39,7 +39,7 @@ const ModalOverlay = styled.div`
 
 const ModalHeader = styled.h2`
   margin-bottom: 1.5rem;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: #28313b;
   background: linear-gradient(135deg, #ffcc00, #d8b4fe);
   -webkit-background-clip: text;

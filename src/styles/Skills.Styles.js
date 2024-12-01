@@ -1,4 +1,3 @@
-// Skills.Styles.js
 import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
 
@@ -10,20 +9,39 @@ const SkillsContainer = styled.div`
   background: linear-gradient(135deg, #6b73ff, #000dff);
   min-height: 100vh;
   color: white;
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const SkillsWrapper = styled.div`
   display: inherit;
   flex-direction: column;
   align-items: start;
+
+  @media (max-width: 768px) {
+    align-items: center; /* Center align on smaller screens */
+  }
 `;
 
 const Header = styled(motion.h1)`
   font-size: 3rem;
   margin-bottom: 3rem;
-  /* color: #d8b4fe; */
   color: #ffcc00;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
 `;
 
 const SkillGrid = styled.div`
@@ -32,6 +50,16 @@ const SkillGrid = styled.div`
   gap: 2rem;
   width: 100%;
   max-width: 1200px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 `;
 
 const SkillCard = styled(motion.div)`
@@ -55,6 +83,10 @@ const SkillCard = styled(motion.div)`
     font-size: 1rem;
     color: #d8b4fe;
     margin-bottom: 0.5rem;
+
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+    }
   }
 
   .skill-level {
@@ -64,12 +96,24 @@ const SkillCard = styled(motion.div)`
     border-radius: 5px;
     margin-bottom: 0.5rem;
     display: inline-block;
+
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
   }
 `;
 
 const SkillIcon = styled.div`
   font-size: 3rem;
   margin-bottom: 1rem;
+
+  @media (max-width: 480px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const KeyFrames = keyframes`
@@ -89,6 +133,14 @@ const CategoryTitle = styled.h2`
   font-weight: 800;
   animation: ${KeyFrames} 3s forwards;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const SkillsDataContainer = styled.div`
@@ -98,9 +150,11 @@ const SkillsDataContainer = styled.div`
 const Experience = styled.div.attrs({
   className: "years-experience",
 })``;
+
 const SkillLevel = styled.div.attrs({
   className: "skill-level",
 })``;
+
 export {
   SkillsContainer,
   SkillsWrapper,
