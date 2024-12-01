@@ -59,19 +59,6 @@ const Skills = () => {
             <CategoryTitle>{category.category}</CategoryTitle>
             <SkillGrid>
               {category.skills.map((skill, index) => (
-                // <SkillCard
-                //   key={index}
-                //   initial={{ opacity: 0, scale: 0.8 }}
-                //   animate={revealed ? { opacity: 1, scale: 1 } : {}}
-                //   transition={{ duration: 0.5, delay: index * 0.3 }}
-                //   whileHover={{ scale: 1.1 }}
-                //   aria-label={skill.name}
-                //   data-tooltip-id="skills-tooltip"
-                //   data-tooltip-content={skill.description}
-                // >
-                //   <SkillIcon>{skill.icon}</SkillIcon>
-                //   {skill.name}
-                // </SkillCard>
                 <SkillCard
                   key={index}
                   initial={{ opacity: 0, scale: 0.8 }}

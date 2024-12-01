@@ -34,20 +34,6 @@ const SkillGrid = styled.div`
   max-width: 1200px;
 `;
 
-// const SkillCard = styled(motion.div)`
-//   background: rgba(255, 255, 255, 0.1);
-//   padding: 2rem;
-//   border-radius: 15px;
-//   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-//   text-align: center;
-//   cursor: pointer;
-//   transition: transform 0.3s;
-
-//   &:hover {
-//     transform: scale(1.1);
-//   }
-// `;
-
 const SkillCard = styled(motion.div)`
   background: rgba(255, 255, 255, 0.1);
   padding: 2rem;

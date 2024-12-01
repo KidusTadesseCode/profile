@@ -1,5 +1,5 @@
 // Resume.js
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import resumeData from "../data/resumeData";
 import {
@@ -11,9 +11,11 @@ import {
   DownloadButton,
 } from "../styles/Resume.Style";
 import { trackButton } from "../ga";
+import DownloadModal from "../components/DownloadModal";
 
 const Resume = () => {
   const svgRef = useRef();
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const svg = d3
@@ -77,7 +79,7 @@ const Resume = () => {
       .attr("fill", "#cccccc")
       .style("font-size", "1rem")
       .text((d) => `${d.title}`);
-    // .text((d) => `${d.title}, ${d.period}`);
+
     timelineGroup
       .selectAll("text.period")
       .data(resumeData)
@@ -103,19 +105,32 @@ const Resume = () => {
     });
   }, []);
 
-  const downloadResume = () => {
-    if (JSON.parse(localStorage.getItem("userConsent")) === true)
-      trackButton("Download Full Resume");
-    window.location.href = `${process.env.PUBLIC_URL}/Kidus_Resume_2024.docx`;
-    return;
+  const resumeLocation = {
+    // pdf: `${process.env.PUBLIC_URL}/resume/V1/pdf/Kidus_Resume_2024.pdf`,
+    // docx: `${process.env.PUBLIC_URL}/resume/V1/word/Kidus_Resume_2024.docx`,
+    pdf: `${process.env.PUBLIC_URL}/resume/V2/pdf/Kidus_Resume_2024.pdf`,
+    docx: `${process.env.PUBLIC_URL}/resume/V2/word/Kidus_Resume_2024.docx`,
+  };
+
+  const handleDownloadClick = () => {
+    setShowModal(true);
   };
 
   return (
     <Container>
       <ResumeContainer>
-        <DownloadButton onClick={downloadResume}>
+        <DownloadButton onClick={handleDownloadClick}>
           Download Full Resume
         </DownloadButton>
+        {showModal && (
+          <DownloadModal
+            setShowModal={setShowModal}
+            resumeLocation={resumeLocation}
+            promptMessage={
+              "Select your preferred format to download the resume."
+            }
+          />
+        )}
         <SvgContainer>
           <svg ref={svgRef}></svg>
         </SvgContainer>

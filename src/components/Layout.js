@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import Navigation from "./Navigation";
 import ConsentModal from "./ConsentModal";
 import AnalyticsProvider from "./AnalyticsProvider";
+import Footer from "../pages/Footer";
 
 const Layout = () => {
   const [consent, setConsent] = useState(localStorage.getItem("userConsent"));
@@ -37,6 +38,7 @@ const Layout = () => {
       <AnalyticsProvider>
         <Outlet />
       </AnalyticsProvider>
+      <Footer />
     </>
   );
 };
