@@ -29,10 +29,9 @@ const Copyright = styled.p`
 `;
 
 const FooterQuote = styled.p`
-  /* font-style: italic; */
+  font-style: italic;
   font-size: 1rem;
   color: #d8b4fe;
-  /* color: #fff; */
   margin-top: 1rem;
 `;
 
