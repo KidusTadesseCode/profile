@@ -28,4 +28,12 @@ const Copyright = styled.p`
   color: #d8b4fe;
 `;
 
-export { FooterContainer, SocialIcons, Copyright };
+const FooterQuote = styled.p`
+  /* font-style: italic; */
+  font-size: 1rem;
+  color: #d8b4fe;
+  /* color: #fff; */
+  margin-top: 1rem;
+`;
+
+export { FooterContainer, SocialIcons, Copyright, FooterQuote };

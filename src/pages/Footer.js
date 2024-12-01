@@ -5,6 +5,7 @@ import {
   FooterContainer,
   SocialIcons,
   Copyright,
+  FooterQuote,
 } from "../styles/Footer.Style";
 
 const Footer = () => {
@@ -29,7 +30,8 @@ const Footer = () => {
           <FaEnvelope />
         </a>
       </SocialIcons>
-      <Copyright>&copy; 2024 Kidus Tadessa. All rights reserved.</Copyright>
+      <FooterQuote>Transforming Ideas into Solutions</FooterQuote>
+      <Copyright>&copy;2024 Kidus Tadessa. All rights reserved.</Copyright>
     </FooterContainer>
   );
 };
